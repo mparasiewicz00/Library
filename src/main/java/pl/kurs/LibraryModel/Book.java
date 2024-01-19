@@ -6,12 +6,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Book {
+
+    private int nextId = 1000;
     private int bookId;
     private String title;
     private String author;
     public User borrower;
-    public Book(int bookId, String title, String author) {
-        this.bookId = bookId;
+    public Book(String title, String author) {
+        this.bookId = ++nextId;
         this.title = title;
         this.author = author;
         this.borrower = null;
@@ -33,8 +35,10 @@ public class Book {
         this.author = author;
     }
     public User getBorrower() {
-        return Optional.ofNullable(borrower).orElseThrow(() -> new BorrowerEmptyException("Book is not borrowed now"));
+        return Optional.ofNullable(borrower)
+                .orElseThrow(() -> new BorrowerEmptyException("Book is not borrowed now"));
     }
+
     public void setBorrower(User borrower) {
         this.borrower = borrower;
     }

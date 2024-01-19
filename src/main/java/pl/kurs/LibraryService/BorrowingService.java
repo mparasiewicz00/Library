@@ -18,7 +18,11 @@ public class BorrowingService {
 
     public static Book findBookByID (List<Book> books, long bookId) throws BookNotExistException {
 
-        return null;
+        return books.stream()
+                .filter(book -> bookId == book.getBookId())
+                .findFirst()
+                .orElseThrow(BookNotExistException::new);
+
     }
 
 }
