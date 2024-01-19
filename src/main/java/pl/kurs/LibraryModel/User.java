@@ -64,8 +64,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "libraryDomain='" + libraryDomain + '\'' +
-                ", userId=" + userId +
+                "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", userEmail='" + userEmail + '\'' +

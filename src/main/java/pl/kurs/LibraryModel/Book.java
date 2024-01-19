@@ -2,6 +2,7 @@ package pl.kurs.LibraryModel;
 
 import pl.kurs.LibraryService.BorrowerEmptyException;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class Book {
@@ -32,13 +33,31 @@ public class Book {
         this.author = author;
     }
     public User getBorrower() {
-        Optional<User> optionalUser = Optional.ofNullable(borrower);
-        return optionalUser.orElseThrow(() -> new BorrowerEmptyException("Book is not borrowed now"));
+        return Optional.ofNullable(borrower).orElseThrow(() -> new BorrowerEmptyException("Book is not borrowed now"));
     }
     public void setBorrower(User borrower) {
         this.borrower = borrower;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return bookId == book.bookId && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(borrower, book.borrower);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId, title, author, borrower);
+    }
 
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", borrower=" + borrower +
+                '}';
+    }
 }
