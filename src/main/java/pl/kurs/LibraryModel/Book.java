@@ -34,9 +34,9 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-    public User getBorrower() {
+    public User getBorrower() throws BorrowerEmptyException {
         return Optional.ofNullable(borrower)
-                .orElseThrow(() -> new BorrowerEmptyException("Book is not borrowed now"));
+                .orElseThrow(BorrowerEmptyException::new);
     }
 
     public void setBorrower(User borrower) {

@@ -26,18 +26,19 @@ public class BorrowingService {
                 .orElseThrow(BookNotExistException::new);
 
     }
+    public static void printBookInfo (List<Book> books, String bookName) throws BookNotExistException {
+        Book findedBook = books.stream()
+                .filter(book -> bookName.equals(book.getTitle()))
+                .findFirst()
+                .orElseThrow(BookNotExistException::new);
 
-//    public static Optional<User> printBookInfo (List<Book> books, String bookName) throws BookNotExistException {
-//        Book findedBook = books.stream()
-//                .filter(book -> bookName.equals(book.getTitle()))
-//                .findFirst()
-//                .orElseThrow(BookNotExistException::new);
-//
-//        return Optional.ofNullable(findedBook.getBorrower())
-//                .ifPresentOrElse(x -> System.out.println(findedBook.getBorrower()), () -> System.out.println(""));
-//
-//    }
-
-
+        try {
+            Optional.of(findedBook.getBorrower())
+                    .ifPresent(x -> System.out.println("Book borrowed by: " + findedBook.getBorrower()));
+        } catch (BorrowerEmptyException e) {
+            System.out.println("Book: " +findedBook.getTitle()+ " is available to borrow");
+            System.out.println("Book info: " + findedBook);
+        }
+    }
 
 }
