@@ -25,4 +25,17 @@ public class BorrowingService {
 
     }
 
+//    public static Optional<User> printBookInfo (List<Book> books, String bookName) throws BookNotExistException {
+//        Book findedBook = books.stream()
+//                .filter(book -> bookName.equals(book.getTitle()))
+//                .findFirst()
+//                .orElseThrow(BookNotExistException::new);
+//
+//        return Optional.ofNullable(findedBook.getBorrower())
+//                .ifPresentOrElse(x -> System.out.println(findedBook.getBorrower()), () -> System.out.println(""));
+//
+//    }
+
+
+
 }
