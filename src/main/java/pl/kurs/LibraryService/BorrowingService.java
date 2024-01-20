@@ -26,9 +26,9 @@ public class BorrowingService {
                 .orElseThrow(BookNotExistException::new);
 
     }
-    public static void printBookInfo (List<Book> books, String bookName, long bookId) throws BookNotExistException {
+    public static void printBookInfo (List<Book> books, long bookId) throws BookNotExistException {
         Book findedBook = books.stream()
-                .filter(book -> bookName.equals(book.getTitle()) && book.getBookId() == bookId)
+                .filter(book -> book.getBookId() == bookId)
                 .findFirst()
                 .orElseThrow(BookNotExistException::new);
 

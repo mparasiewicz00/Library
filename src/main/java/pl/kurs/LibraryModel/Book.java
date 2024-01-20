@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class Book {
 
-    private int nextId = 1000;
+    private static int nextId = 1000;
     private int bookId;
     private String title;
     private String author;

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
     private final String libraryDomain = "@mylibrary.pl";
-    private long nextId;
+    private static long nextId;
     private long userId;
     private String firstName;
     private String lastName;
