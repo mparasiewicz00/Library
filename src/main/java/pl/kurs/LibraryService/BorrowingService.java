@@ -10,7 +10,9 @@ public class BorrowingService {
 
     public static void borrowBook(Book book, User borrower) {
         try{
-            book.getBorrower();
+            Optional.of(book.getBorrower())
+                    .ifPresent(x -> System.out.println("Book already borrowed now."));
+
         } catch (BorrowerEmptyException e) {
             book.setBorrower(borrower);
         }

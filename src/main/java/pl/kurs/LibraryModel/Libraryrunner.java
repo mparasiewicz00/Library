@@ -24,7 +24,6 @@ public class Libraryrunner {
 
         BorrowingService.borrowBook(library.getFirst(), user1);
 
-        System.out.println(BorrowingService.findBookByID(library, 1001));
 
     }
 }

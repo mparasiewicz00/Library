@@ -1,0 +1,17 @@
+System Zarządzania Biblioteką
+Twoim zadaniem jest stworzenie prostego systemu zarządzania biblioteką, który wykorzystuje typy opcjonalne do obsługi sytuacji, w których pewne dane mogą być niedostępne.
+Specyfikacja:
+1. Model Danych:
+- Utwórz klasy Book i User. Klasa Book powinna zawierać informacje takie jak id, title, author, i borrower (osoba wypożyczająca książkę, typu User). Pole borrower powinno być typu User, ale pomyśl, czy w getterze nie powinniśmy zastosować optional.of, aby obsługiwać sytuacje, gdy książka nie jest wypożyczona.
+- Klasa User powinna zawierać informacje takie jak id, name, i email.
+2. Logika Wypożyczania:
+- Utwórz metodę borrowBook, która przyjmuje Book i User jako argumenty. Metoda ta powinna przypisywać użytkownika do książki jako wypożyczającego, ale tylko wtedy, gdy książka nie jest obecnie wypożyczona (sprawdź, czy borrower jest pusty).
+3. Wyszukiwanie Książek:
+- Utwórz metodę findBookById, która zwraca Boo. Jeśli książka o danym ID istnieje, zwróć ją a w przeciwnym razie rzuć wyjątkiem.
+4. Wyświetlanie Informacji:
+- Utwórz metodę do wyświetlania informacji o książce, która wykorzystuje typ opcjonalny borrower. Jeśli książka jest wypożyczona, wyświetl informacje o wypożyczającym, w przeciwnym razie poinformuj, że książka jest dostępna.
+Dodatkowe Wyzwania:
+- Zaimplementuj obsługę wyjątków, na przykład gdy użytkownik próbuje wypożyczyć już wypożyczoną książkę.
+- Utwórz testy jednostkowe sprawdzające różne scenariusze związane z wypożyczaniem i wyszukiwaniem książek.
+- Rozważ zastosowanie strumieni (Java Streams) do bardziej zaawansowanych operacji na kolekcjach książek i użytkowników.
+Do wszystkich operacji używaj Optionali, Streamów i innych fajnych rzeczy które umiesz.
