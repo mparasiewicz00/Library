@@ -22,7 +22,8 @@ public class Libraryrunner {
 
         System.out.println(BorrowingService.findBookByID(library, 1001));
 
-        BorrowingService.borrowBook(library.getFirst(), user1);
+
+        BorrowingService.printBookInfo(library, "W pustyni i w puszczy");
 
 
     }
