@@ -42,7 +42,7 @@ class BorrowingServiceTest {
 
         Book result =  BorrowingService.findBookByID(library1, 3);
 
-        assertEquals(library1.getFirst(), result);
+        assertEquals(library1.get(0), result);
 
     }
 
@@ -95,7 +95,7 @@ class BorrowingServiceTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
 
-        BorrowingService.borrowBook(library5.getFirst(), user1);
+        BorrowingService.borrowBook(library5.get(0), user1);
         BorrowingService.printBookInfo(library5, 6 );
 
         System.setOut(System.out);
