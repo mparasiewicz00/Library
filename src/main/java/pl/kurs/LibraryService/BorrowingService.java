@@ -38,7 +38,7 @@ public class BorrowingService {
             Optional.ofNullable(findedBook.getBorrower())
                     .ifPresent(x -> System.out.println("Book borrowed by: " + findedBook.getBorrower()));
         } catch (BorrowerEmptyException e) {
-            System.out.println("Book: " +findedBook.getTitle()+ " is available to borrow");
+            System.out.println("Book: " + findedBook.getTitle() + " is available to borrow");
             System.out.println("Book info: " + findedBook);
         }
     }

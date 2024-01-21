@@ -7,14 +7,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Book {
-
-    private static int nextId = 1000;
     private int bookId;
     private String title;
     private String author;
     public User borrower;
-    public Book(String title, String author) {
-        this.bookId = ++nextId;
+    public Book(int bookId, String title, String author) {
+        this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.borrower = null;

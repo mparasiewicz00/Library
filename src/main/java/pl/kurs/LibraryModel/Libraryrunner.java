@@ -13,32 +13,34 @@ public class Libraryrunner {
         User user2 = new User("Gacuś", "Parasiewicz");
 
         List<Book> library = List.of(
-                new Book("W pustyni i w puszczy", "Henryk Sienkiewicz"),
-                new Book("W pustyni i w puszczy1", "Henryk Sienkiewicz"),
-                new Book("W pustyni i w puszczy2", "Henryk Sienkiewicz"),
-                new Book("W pustyni i w puszczy3", "Henryk Sienkiewicz"),
-                new Book("W pustyni i w puszczy4", "Henryk Sienkiewicz")
+                new Book(1,"W pustyni i w puszczy", "Henryk Sienkiewicz"),
+                new Book(2,"Ślepnąc od świateł", "Jakub Żulczyk"),
+                new Book(3,"Dawno temu w Warszawie", "Jakub Żulczyk"),
+                new Book(4,"Shoe Dog", "Phil Knight")
         );
 
 
-        BorrowingService.borrowBook(library.getFirst(), user1);
+        BorrowingService.borrowBook(library.get(3), user);
+        BorrowingService.borrowBook(library.getFirst(), user2);
+        BorrowingService.printBookInfo(library, 1);
+        BorrowingService.printBookInfo(library, 3);
+
+        try {
+            System.out.println(BorrowingService.findBookByID(library, 10));
+        } catch (BookNotExistException e) {
+            System.out.println("Error. Book not exist.");
+        }
 
 
-//        BorrowingService.borrowBook(library.getFirst(), user);
-//
-//        library.getFirst().setBorrower(user2);
-//
-//        System.out.println(library.getFirst());
 
-//        System.out.println(BorrowingService.findBookByID(library, 1001));
-//
-////        library.forEach(System.out::println);
-////        System.out.println(user);
-////        System.out.println(user1);
-////        System.out.println(user2);
-//
-//        BorrowingService.printBookInfo(library, 1001);
+        List<Book> library2 = List.of(
+                new Book(6,"Shoe Dog 2", "Phil Knight")
+        );
+        User borrower = new User("Albert", "Einstein");
 
+
+        BorrowingService.borrowBook(library2.getFirst(), borrower);
+        BorrowingService.printBookInfo(library2, 6 );
 
     }
 }
