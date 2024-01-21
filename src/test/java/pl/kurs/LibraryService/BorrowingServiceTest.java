@@ -108,7 +108,7 @@ class BorrowingServiceTest {
 
 
     @Test
-    public void testPrintBookInfo_BookNotExist() {
+    void testPrintBookInfo_BookNotExist() {
         List<Book> library6 = new ArrayList<>();
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
