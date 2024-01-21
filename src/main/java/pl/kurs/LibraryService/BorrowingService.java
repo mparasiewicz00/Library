@@ -2,6 +2,9 @@ package pl.kurs.LibraryService;
 
 import pl.kurs.LibraryModel.Book;
 import pl.kurs.LibraryModel.User;
+import pl.kurs.LibraryService.MyException.BookNotExistException;
+import pl.kurs.LibraryService.MyException.BorrowerEmptyException;
+import pl.kurs.LibraryService.MyException.UserFoundException;
 
 import java.util.List;
 import java.util.Optional;

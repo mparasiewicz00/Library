@@ -1,6 +1,6 @@
 package pl.kurs.LibraryModel;
 
-import pl.kurs.LibraryService.BookNotExistException;
+import pl.kurs.LibraryService.MyException.BookNotExistException;
 import pl.kurs.LibraryService.BorrowingService;
 
 import java.util.List;

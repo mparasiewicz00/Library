@@ -1,7 +1,7 @@
 package pl.kurs.LibraryModel;
 
-import pl.kurs.LibraryService.BorrowerEmptyException;
-import pl.kurs.LibraryService.UserFoundException;
+import pl.kurs.LibraryService.MyException.BorrowerEmptyException;
+import pl.kurs.LibraryService.MyException.UserFoundException;
 
 import java.util.Objects;
 import java.util.Optional;

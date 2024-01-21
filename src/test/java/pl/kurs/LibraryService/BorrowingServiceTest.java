@@ -3,6 +3,8 @@ package pl.kurs.LibraryService;
 import org.junit.jupiter.api.Test;
 import pl.kurs.LibraryModel.Book;
 import pl.kurs.LibraryModel.User;
+import pl.kurs.LibraryService.MyException.BookNotExistException;
+import pl.kurs.LibraryService.MyException.UserFoundException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
