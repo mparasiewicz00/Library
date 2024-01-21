@@ -11,7 +11,6 @@ class BorrowingServiceTest {
     void borrowNotBorrowedBook() {
         Book book = new Book("Dawno temu w Warszawie", "Żulczyk");
         User user1 = new User("Adam", "Abacki");
-        User user2 = new User("Bartosz", "Babacki");
 
         BorrowingService.borrowBook(book, user1);
 
