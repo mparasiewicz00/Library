@@ -1,6 +1,7 @@
 package pl.kurs.LibraryModel;
 
 import pl.kurs.LibraryService.BorrowerEmptyException;
+import pl.kurs.LibraryService.UserFoundException;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -38,9 +39,12 @@ public class Book {
         return Optional.ofNullable(borrower)
                 .orElseThrow(BorrowerEmptyException::new);
     }
-
     public void setBorrower(User borrower) {
-        this.borrower = borrower;
+        if (this.borrower == null) {
+            this.borrower = borrower;
+        } else {
+            throw new UserFoundException("Book is borrowed now!");
+        }
     }
     @Override
     public boolean equals(Object o) {

@@ -20,16 +20,24 @@ public class Libraryrunner {
                 new Book("W pustyni i w puszczy4", "Henryk Sienkiewicz")
         );
 
-        BorrowingService.borrowBook(library.getFirst(), user);
 
-        System.out.println(BorrowingService.findBookByID(library, 1001));
+        BorrowingService.borrowBook(library.getFirst(), user1);
 
-//        library.forEach(System.out::println);
-//        System.out.println(user);
-//        System.out.println(user1);
-//        System.out.println(user2);
 
-        BorrowingService.printBookInfo(library, 1001);
+//        BorrowingService.borrowBook(library.getFirst(), user);
+//
+//        library.getFirst().setBorrower(user2);
+//
+//        System.out.println(library.getFirst());
+
+//        System.out.println(BorrowingService.findBookByID(library, 1001));
+//
+////        library.forEach(System.out::println);
+////        System.out.println(user);
+////        System.out.println(user1);
+////        System.out.println(user2);
+//
+//        BorrowingService.printBookInfo(library, 1001);
 
 
     }

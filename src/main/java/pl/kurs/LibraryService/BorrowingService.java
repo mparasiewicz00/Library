@@ -11,7 +11,9 @@ public class BorrowingService {
     public static void borrowBook(Book book, User borrower) {
         try{
             Optional.of(book.getBorrower())
-                    .ifPresent(x -> System.out.println("Book already borrowed now."));
+                    .ifPresent(x -> {
+                        throw new UserFoundException("Borrower with ID: " + borrower.getUserId()+ " is found.");
+                    });
 
         } catch (BorrowerEmptyException e) {
             book.setBorrower(borrower);
@@ -24,8 +26,8 @@ public class BorrowingService {
                 .filter(book -> bookId == book.getBookId())
                 .findFirst()
                 .orElseThrow(BookNotExistException::new);
-
     }
+
     public static void printBookInfo (List<Book> books, long bookId) throws BookNotExistException {
         Book findedBook = books.stream()
                 .filter(book -> book.getBookId() == bookId)
@@ -33,7 +35,7 @@ public class BorrowingService {
                 .orElseThrow(BookNotExistException::new);
 
         try {
-            Optional.of(findedBook.getBorrower())
+            Optional.ofNullable(findedBook.getBorrower())
                     .ifPresent(x -> System.out.println("Book borrowed by: " + findedBook.getBorrower()));
         } catch (BorrowerEmptyException e) {
             System.out.println("Book: " +findedBook.getTitle()+ " is available to borrow");
