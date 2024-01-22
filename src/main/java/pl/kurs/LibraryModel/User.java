@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class User {
     private final String libraryDomain = "@mylibrary.pl";
-    private static long nextId;
-    private long userId;
+    private static int nextId;
+    private int userId;
     private String firstName;
     private String lastName;
     private String userEmail;
@@ -17,11 +17,11 @@ public class User {
         this.userEmail = (firstName.concat(lastName).concat(libraryDomain)).toLowerCase();
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

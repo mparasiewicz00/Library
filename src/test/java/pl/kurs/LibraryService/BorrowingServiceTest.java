@@ -39,16 +39,18 @@ class BorrowingServiceTest {
 //    }
 
 
-    @BeforeEach
-    void beforeEach() {
-        user = mock(User.class);
-        book = mock(Book.class);
-    }
+//    @BeforeEach
+//    void beforeEach() {
+//        user = mock(User.class);
+//        book = mock(Book.class);
+//    }
 
     @Test
     void testBorrowBook_BookNotBorrowed() {
+        Book book = mock(Book.class);
+        User user = mock(User.class);
         //given
-        doReturn(1l).when(user).getUserId();
+        doReturn(1).when(user).getUserId();
         doReturn("Adam").when(user).getFirstName();
         doReturn("Kowalski").when(user).getLastName();
 
@@ -62,17 +64,23 @@ class BorrowingServiceTest {
                 () -> verify(book, atMostOnce()).setBorrower(user),
                 () -> verify(book, times(1)).getBorrower()
         );
-
     }
-
     @Test
     void testBorrowBook_BookBorrowed() {
-        Book book2 = new Book(2, "Dawno temu w Warszawie", "Żulczyk");
-        User user1 = new User("Adam", "Abacki");
-        User user2 = new User("Bartosz", "Babacki");
-        book2.setBorrower(user1);
+        Book book = mock(Book.class);
+        User user = mock(User.class);
+        User user1 = mock(User.class);
 
-        assertThrows(UserFoundException.class, () -> BorrowingService.borrowBook(book2, user2));
+        doReturn(1).when(user).getUserId();
+        doReturn("Adam").when(user).getFirstName();
+        doReturn("Kowalski").when(user).getLastName();
+
+        when(book.getBorrower()).thenReturn(mock(User.class));
+
+        assertThrows(UserFoundException.class, () -> BorrowingService.borrowBook(book, user1));
+
+        verifyNoInteractions(user1);
+
     }
 
     @Test
