@@ -10,7 +10,7 @@ public class Book {
     private int bookId;
     private String title;
     private String author;
-    public User borrower;
+    private User borrower;
 
     public Book(int bookId, String title, String author) {
         this.bookId = bookId;

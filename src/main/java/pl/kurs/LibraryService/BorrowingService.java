@@ -22,17 +22,15 @@ public class BorrowingService {
             return findBook(books, bookId);
     }
 
-    public static void printBookInfo(List<Book> books, long bookId) {
-        try {
+    public static void printBookInfo(List<Book> books, long bookId) throws BookNotExistException {
+
             Book findedBook = findBook(books, bookId);
             Optional.ofNullable(findedBook.getBorrower())
                     .ifPresentOrElse(x -> {
                                 System.out.println("Book borrowed by: " + findedBook.getBorrower());
                             },
                             () -> System.out.println("Book: " + findedBook.getTitle() + " is available to borrow" + "\n" + "Book info: " + findedBook));
-        } catch (BookNotExistException e) {
-            System.out.println(e.getMessage());
-        }
+
     }
 
     private static Book findBook(List<Book> books, long bookId) throws BookNotExistException {
