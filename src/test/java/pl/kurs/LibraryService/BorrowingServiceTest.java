@@ -1,11 +1,8 @@
 package pl.kurs.LibraryService;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import pl.kurs.LibraryModel.Book;
 import pl.kurs.LibraryModel.User;
 import pl.kurs.LibraryService.MyException.BookNotExistException;
@@ -20,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class BorrowingServiceTest {
-
     @InjectMocks
     private BorrowingService borrowingService;
     private Book book;
@@ -85,20 +81,25 @@ class BorrowingServiceTest {
 
     @Test
     void testFindBookByID_BookExist() throws BookNotExistException {
-        List<Book> library1 = List.of(
-                new Book(3, "Ślepnac od świateł", "Żulczyk")
+        List<Book> libraryMock = new ArrayList<>();
+        Book bookForMockLibrary = mock(Book.class);
+        libraryMock.add(bookForMockLibrary);
+
+        doReturn(3).when(bookForMockLibrary).getBookId();
+        doReturn("Ślepnąc od świateł").when(bookForMockLibrary).getTitle();
+        doReturn("Jakub Żulczyk").when(bookForMockLibrary).getAuthor();
+
+        Book result = BorrowingService.findBookByID(libraryMock, 3);
+        assertAll(
+                () -> assertEquals(bookForMockLibrary, result),
+                () -> verify(bookForMockLibrary, times(1)).getBookId()
         );
-
-        Book result = BorrowingService.findBookByID(library1, 3);
-
-        assertEquals(library1.get(0), result);
-
     }
 
     @Test
     void testFindBookByID_BookNotExist() {
         List<Book> library2 = List.of(
-                new Book(4, "Ślepnac od świateł", "Żulczyk")
+                mock(Book.class)
         );
 
         assertThrows(BookNotExistException.class, () -> BorrowingService.findBookByID(library2, 10));
@@ -106,7 +107,7 @@ class BorrowingServiceTest {
 
     @Test
     void testFindBookByID_EmptyList() {
-        List<Book> library3 = new ArrayList<>();
+        List<Book> library3 = mock(List.class);
 
         assertThrows(BookNotExistException.class, () -> BorrowingService.findBookByID(library3, 10));
     }

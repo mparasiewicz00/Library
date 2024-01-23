@@ -18,11 +18,11 @@ public class BorrowingService {
             throw new UserFoundException("Book already borrower");
     }
 
-    public static Book findBookByID(List<Book> books, long bookId) throws BookNotExistException {
+    public static Book findBookByID(List<Book> books, int bookId) throws BookNotExistException {
             return findBook(books, bookId);
     }
 
-    public static void printBookInfo(List<Book> books, long bookId) throws BookNotExistException {
+    public static void printBookInfo(List<Book> books, int bookId) throws BookNotExistException {
 
             Book findedBook = findBook(books, bookId);
             Optional.ofNullable(findedBook.getBorrower())
@@ -33,7 +33,7 @@ public class BorrowingService {
 
     }
 
-    private static Book findBook(List<Book> books, long bookId) throws BookNotExistException {
+    private static Book findBook(List<Book> books, int bookId) throws BookNotExistException {
         return books.stream()
                 .filter(book -> bookId == book.getBookId())
                 .findFirst()
