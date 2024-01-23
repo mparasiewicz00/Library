@@ -3,6 +3,7 @@ package pl.kurs.LibraryService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import pl.kurs.LibraryModel.Book;
 import pl.kurs.LibraryModel.User;
 import pl.kurs.LibraryService.MyException.BookNotExistException;
@@ -79,9 +80,10 @@ class BorrowingServiceTest {
 
     }
 
+    @Spy
+    List<Book> libraryMock = new ArrayList<>();
     @Test
     void testFindBookByID_BookExist() throws BookNotExistException {
-        List<Book> libraryMock = new ArrayList<>();
         Book bookForMockLibrary = mock(Book.class);
         libraryMock.add(bookForMockLibrary);
 
@@ -98,11 +100,11 @@ class BorrowingServiceTest {
 
     @Test
     void testFindBookByID_BookNotExist() {
-        List<Book> library2 = List.of(
-                mock(Book.class)
-        );
 
-        assertThrows(BookNotExistException.class, () -> BorrowingService.findBookByID(library2, 10));
+        Book bookWithDifferentID = mock(Book.class);
+        libraryMock.add(bookWithDifferentID);
+
+        assertThrows(BookNotExistException.class, () -> BorrowingService.findBookByID(libraryMock, 10));
     }
 
     @Test
